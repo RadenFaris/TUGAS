@@ -1,0 +1,1001 @@
+import java.util.*;
+
+class Node{
+    String nama, tempat_lahir, alamat, pekerjaan;
+    int tanggal_lahir, tahun_lahir, agama, jenis_kelamin, status, bulan_lahir;
+    Node prev;
+    Node next;
+    Node(String a, String b, int c, int d, int e, int f, String g, int h, int i, String j){
+        nama = a;
+        tempat_lahir = b;
+        tanggal_lahir = c;
+        bulan_lahir = d;
+        tahun_lahir = e;
+        jenis_kelamin = f;
+        alamat = g;
+        agama = h;
+        status = i;
+        pekerjaan = j;
+    }
+}
+
+class menu_dan_penerjemahan_data{
+    public void menu_bulan(){
+        System.out.print("[Menu Bulan]\n1.  Januari\n2.  Februari\n3.  Maret\n4.  April\n5.  Mei\n6.  Juni\n7.  Juli\n8.  Agustus\n9.  September\n10. Oktober\n11. November\n12. Desember\nMasukkan pilihan (angka 1-12): ");
+    }
+
+    public void menu_bulan_lahir(){
+        System.out.print("[Menu Bulan Lahir]\n1.  Januari\n2.  Februari\n3.  Maret\n4.  April\n5.  Mei\n6.  Juni\n7.  Juli\n8.  Agustus\n9.  September\n10. Oktober\n11. November\n12. Desember\nMasukkan pilihan (angka 1-12): ");
+    }
+
+    public void menu_jenis_kelamin(){
+        System.out.print("[Menu Jenis Kelamin]\n1. Laki - laki\n2. Perempuan\nMasukkan pilihan (angka 1-2): ");
+    }
+
+    public void menu_agama(){
+        System.out.print("[Menu Agama]\n1. Islam\n2. Protestan\n3. Katolik\n4. Hindu\n5. Buddha\n6. Kong Hu Chu\nMasukkan pilihan (angka 1-6): ");
+    }
+
+    public void menu_status(){
+        System.out.print("[Menu Status]\n1. Belum Kawin\n2. Sudah Kawin\nMasukkan pilihan (angka 1-2): ");
+    }
+
+    public int counterTotalData(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterAgamaIslam(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.agama == 1)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterAgamaProtestan(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.agama == 2)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterAgamaKatolik(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.agama == 3)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterAgamaHindu(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.agama == 4)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterAgamaBuddha(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.agama == 5)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterAgamaKongHuChu(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.agama == 6)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterPerempuan(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.jenis_kelamin == 2)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterLakilaki(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.jenis_kelamin == 1)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterBelumKawin(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.status == 1)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public int counterSudahKawin(Node last){
+        int a = 0;
+        Node temp = last;
+        while(temp!=null){
+            if(temp.status == 2)
+                a++;
+            temp = temp.prev;
+        }
+        return a;
+    }
+
+    public String cek_bulan_lahir(int x){
+        String a = " ";
+        switch(x){
+            case 1:
+                a = "Januari";
+                break;
+            case 2:
+                a = "Februari";
+                break;
+            case 3:
+                a = "Maret";
+                break;
+            case 4:
+                a = "April";
+                break;
+            case 5:
+                a = "Mei";
+                break;
+            case 6:
+                a = "Juni";
+            case 7:
+                a = "Juli";
+                break;
+            case 8:
+                a = "Agustus";
+                break;
+            case 9:
+                a = "September";
+                break;
+            case 10:
+                a = "Oktober";
+                break;
+            case 11:
+                a = "November";
+                break;
+            case 12:
+                a = "Desember";
+                break;
+        }
+        return a;
+    }
+
+    public String cek_jenis_kelamin(int x){
+        String a = " ";
+        switch(x){
+            case 1:
+                a = "Laki-laki";
+                break;
+            case 2:
+                a = "Perempuan";
+                break;
+        }
+        return a;
+    }
+
+    public String cek_agama(int x){
+        String a = " ";
+        switch(x){
+            case 1:
+                a = "Islam";
+                break;
+            case 2:
+                a = "Protestan";
+                break;
+            case 3:
+                a = "Katolik";
+                break;
+            case 4:
+                a = "Hindu";
+                break;
+            case 5:
+                a = "Buddha";
+                break;
+            case 6:
+                a = "Kong Hu Cu";
+                break;
+        }
+        return a;
+    }
+
+    public String cek_status(int x){
+        String a = " ";
+        switch(x){
+            case 1:
+                a = "Belum Menikah";
+                break;
+            case 2:
+                a = "Sudah Menikah";
+                break;
+        }
+        return a;
+    }
+
+    public int jumlah_digit_tanggal_lahir(int x){
+        int a = 0;
+        if(x>0 && x<10)
+            a = 1;
+        else if(x>=10 && x<=31){
+            a = 2;
+        }
+        return a;
+    }
+
+    public int konversi_umur_ke_hari(int x,int y, int z, int a, int b, int c){
+        int umur_hari = 0, temp_z = z+1, temp_c = c; 
+        //selisih 1 tahun setelah lahir dan 1 tahun sebelum sekarang
+        while(temp_z < temp_c){
+            if(temp_z % 4 == 0){
+                umur_hari = umur_hari + 366;
+            }
+            else{
+                umur_hari = umur_hari + 365;
+            }
+            temp_z++;
+        }
+        //di tahun lahir dipotong jumlah hari sebelum lahir di tahun yang sama
+        if(z % 4 == 0){
+            if(y == 1)
+                umur_hari = umur_hari + (366-x);
+            else if(y == 2)
+                umur_hari = umur_hari + (335-x);
+            else if(y == 3)
+                umur_hari = umur_hari + (306-x);
+            else if(y == 4)
+                umur_hari = umur_hari + (275-x);
+            else if(y == 5)
+                umur_hari = umur_hari + (245-x);
+            else if(y == 6)
+                umur_hari = umur_hari + (214-x);
+            else if(y == 7)
+                umur_hari = umur_hari + (184-x);
+            else if(y == 8)
+                umur_hari = umur_hari + (153-x);
+            else if(y == 9)
+                umur_hari = umur_hari + (122-x);
+            else if(y == 10)
+                umur_hari = umur_hari + (92-x);
+            else if(y == 11)
+                umur_hari = umur_hari + (61-x);
+            else if(y == 12)
+                umur_hari = umur_hari + (31-x);
+        }
+        else{
+            if(y == 1)
+                umur_hari = umur_hari + (365-x);
+            else if(y == 2)
+                umur_hari = umur_hari + (334-x);
+            else if(y == 3)
+                umur_hari = umur_hari + (306-x);
+            else if(y == 4)
+                umur_hari = umur_hari + (275-x);
+            else if(y == 5)
+                umur_hari = umur_hari + (245-x);
+            else if(y == 6)
+                umur_hari = umur_hari + (214-x);
+            else if(y == 7)
+                umur_hari = umur_hari + (184-x);
+            else if(y == 8)
+                umur_hari = umur_hari + (153-x);
+            else if(y == 9)
+                umur_hari = umur_hari + (122-x);
+            else if(y == 10)
+                umur_hari = umur_hari + (92-x);
+            else if(y == 11)
+                umur_hari = umur_hari + (61-x);
+            else if(y == 12)
+                umur_hari = umur_hari + (31-x);
+        }
+        //di tahun sekarang dipotong hari sesudah sekarang pada tahun yang sama
+        if(c % 4 == 0){
+            if(b == 1)
+                umur_hari = umur_hari + (a);
+            else if(b == 2)
+                umur_hari = umur_hari + (a+31);
+            else if(b == 3)
+                umur_hari = umur_hari + (a+60);
+            else if(b == 4)
+                umur_hari = umur_hari + (a+91);
+            else if(b == 5)
+                umur_hari = umur_hari + (a+121);
+            else if(b == 6)
+                umur_hari = umur_hari + (a+152);
+            else if(b == 7)
+                umur_hari = umur_hari + (a+182);
+            else if(b == 8)
+                umur_hari = umur_hari + (a+213);
+            else if(b == 9)
+                umur_hari = umur_hari + (a+244);
+            else if(b == 10)
+                umur_hari = umur_hari + (a+274);
+            else if(b == 11)
+                umur_hari = umur_hari + (a+305);
+            else if(b == 12)
+                umur_hari = umur_hari + (a+335);
+        }
+        else{
+            if(b == 1)
+                umur_hari = umur_hari + (a);
+            else if(b == 2)
+                umur_hari = umur_hari + (a+31);
+            else if(b == 3)
+                umur_hari = umur_hari + (a+59);
+            else if(b == 4)
+                umur_hari = umur_hari + (a+90);
+            else if(b == 5)
+                umur_hari = umur_hari + (a+120);
+            else if(b == 6)
+                umur_hari = umur_hari + (a+151);
+            else if(b == 7)
+                umur_hari = umur_hari + (a+181);
+            else if(b == 8)
+                umur_hari = umur_hari + (a+212);
+            else if(b == 9)
+                umur_hari = umur_hari + (a+243);
+            else if(b == 10)
+                umur_hari = umur_hari + (a+273);
+            else if(b == 11)
+                umur_hari = umur_hari + (a+304);
+            else if(b == 12)
+                umur_hari = umur_hari + (a+334);
+        }
+        return umur_hari;
+    }
+
+}
+
+class DoubleLinkedList extends menu_dan_penerjemahan_data{
+    public Node push(Node head, String new_nama, String new_tempat_lahir, int new_tanggal_lahir, 
+                     int new_bulan_lahir, int new_tahun_lahir, int new_jenis_kelamin, 
+                     String new_alamat, int new_agama, int new_status, String new_pekerjaan){
+
+        Node new_Node = new Node(new_nama, new_tempat_lahir, new_tanggal_lahir, new_bulan_lahir, new_tahun_lahir,
+                                 new_jenis_kelamin, new_alamat, new_agama, new_status, new_pekerjaan);
+        new_Node.next = head;
+        new_Node.prev = null;
+
+        if(head!=null){
+            head.prev = new_Node;
+        }
+
+        head = new_Node;
+        return head;
+    }
+
+    public void printList(Node temp){
+        int urutan_data = 1;
+        String a,b,c,d;
+        while (temp!=null){
+            a = cek_bulan_lahir(temp.bulan_lahir);
+            b = cek_agama(temp.agama);
+            c = cek_jenis_kelamin(temp.jenis_kelamin);
+            d = cek_status(temp.status);
+
+            System.out.println("---------------------------------------------------------------------------------------");
+            System.out.println("| Data Ke-"+urutan_data+"                                                                           |");
+            System.out.println("---------------------------------------------------------------------------------------");
+            System.out.print("| Nama          : "+temp.nama);
+            for(int i=0;i<68-temp.nama.length();i++)
+                System.out.print(" ");
+            System.out.println("|");
+
+            System.out.print("| Tempat Lahir  : "+temp.tempat_lahir);
+            for(int i=0;i<68-temp.tempat_lahir.length();i++)
+                System.out.print(" ");
+            System.out.println("|");
+
+            System.out.print("| Tanggal Lahir : "+temp.tanggal_lahir+" "+a+" "+temp.tahun_lahir);
+            for(int i=0;i<68-(jumlah_digit_tanggal_lahir(temp.tanggal_lahir)+6+a.length());i++)
+                System.out.print(" ");
+            System.out.println("|");
+
+            System.out.print("| Jenis Kelamin : "+c);
+            for(int i=0;i<68-c.length();i++)
+                System.out.print(" ");
+            System.out.println("|");
+
+            System.out.print("| Alamat        : "+temp.alamat);
+            for(int i=0;i<68-temp.alamat.length();i++)
+                System.out.print(" ");
+            System.out.println("|");
+
+            System.out.print("| Agama         : "+b);
+            for(int i=0;i<68-b.length();i++)
+                System.out.print(" ");
+            System.out.println("|");
+
+            System.out.print("| Status        : "+d);
+            for(int i=0;i<68-d.length();i++)
+                System.out.print(" ");
+            System.out.println("|");
+
+            System.out.print("| Pekerjaan     : "+temp.pekerjaan);
+            for(int i=0;i<68-temp.pekerjaan.length();i++)
+                System.out.print(" ");
+            System.out.println("|");
+            System.out.println("---------------------------------------------------------------------------------------\n");
+
+            temp = temp.prev;
+            urutan_data++;
+        }
+    }
+
+    public void print_personal_data(Node last, int x){
+        Node temp = last;
+        int urutan_data = 1;
+        while(temp!=null){
+            if(urutan_data == x)
+                break;
+            temp = temp.prev;
+            urutan_data++;
+        }
+        String a,b,c,d;
+        a = cek_bulan_lahir(temp.bulan_lahir);
+        b = cek_agama(temp.agama);
+        c = cek_jenis_kelamin(temp.jenis_kelamin);
+        d = cek_status(temp.status);
+
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("| Data Ke-"+urutan_data+"                                                                           |");
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.print("| Nama          : "+temp.nama);
+        for(int i=0;i<68-temp.nama.length();i++)
+            System.out.print(" ");
+        System.out.println("|");
+
+        System.out.print("| Tempat Lahir  : "+temp.tempat_lahir);
+        for(int i=0;i<68-temp.tempat_lahir.length();i++)
+            System.out.print(" ");
+        System.out.println("|");
+
+        System.out.print("| Tanggal Lahir : "+temp.tanggal_lahir+" "+a+" "+temp.tahun_lahir);
+        for(int i=0;i<68-(jumlah_digit_tanggal_lahir(temp.tanggal_lahir)+6+a.length());i++)
+            System.out.print(" ");
+        System.out.println("|");
+
+        System.out.print("| Jenis Kelamin : "+c);
+        for(int i=0;i<68-c.length();i++)
+            System.out.print(" ");
+        System.out.println("|");
+
+        System.out.print("| Alamat        : "+temp.alamat);
+        for(int i=0;i<68-temp.alamat.length();i++)
+            System.out.print(" ");
+        System.out.println("|");
+
+        System.out.print("| Agama         : "+b);
+        for(int i=0;i<68-b.length();i++)
+            System.out.print(" ");
+        System.out.println("|");
+
+        System.out.print("| Status        : "+d);
+        for(int i=0;i<68-d.length();i++)
+            System.out.print(" ");
+        System.out.println("|");
+
+        System.out.print("| Pekerjaan     : "+temp.pekerjaan);
+        for(int i=0;i<68-temp.pekerjaan.length();i++)
+            System.out.print(" ");
+        System.out.println("|");
+        System.out.println("---------------------------------------------------------------------------------------\n");
+    }
+
+    public void search_name(Node last, String a){
+        Node temp = last;  
+        int urutan_data = 1; 
+        boolean flag = false;   
+        if(temp == null){
+            flag = false;
+        }
+        else{  
+            while(temp != null){   
+                if(temp.nama == a){  
+                    flag = true;    
+                    break;  
+                }   
+                temp = temp.prev;
+                urutan_data++;  
+            }
+        }
+        if(flag == true){
+            System.out.println("Nama '"+a+"' ditemukan sebagai data ke-"+urutan_data);
+            print_personal_data(last,urutan_data);
+        }
+        else
+            System.out.println("Nama '"+a+"' tidak ditemukan");  
+    }
+
+    public Node delete_Node(Node last, Node a){
+        if(last == null || a == null){
+            return null; 
+        } 
+        if(last == a){
+            last = a.prev;
+        }
+        if(a.next != null){
+            a.next.prev = a.prev;
+        }
+        if(a.prev != null){
+            a.prev.next = a.next;
+        }
+        a = null;
+        return last;
+    }
+
+    public Node delete_Node_at_position(Node last, int a){
+        if(last == null || a <= 0){
+            System.out.println("Data Kosong\n");
+            return null;
+        }
+        Node current = last;
+        for(int i = 1; current != null && i < a; i++) 
+        { 
+            current = current.prev; 
+        }
+        if(current == null){
+            return last;
+        }
+        System.out.println("Data Ke-"+a+" Behasil Dihapus\n");
+        return delete_Node(last,current);
+    }
+
+    public void modification(Node last, int a){
+        Scanner in1 = new Scanner(System.in);
+        Scanner in2 = new Scanner(System.in);
+        Node temp = last;
+        int urutan_data = 1;
+        if(last == null){
+            System.out.println("Data Kosong");
+            return;
+        }
+        while(temp!=null){
+            if(urutan_data == a)
+                break;
+            temp = temp.prev;
+            urutan_data++;
+        }
+        while(true){
+            int x = 0;
+            System.out.println("Data apa yang ingin diganti ?\nMenu modifikasi sebagai berikut:\n");
+            System.out.println("1. Ganti Nama\n2. Ganti Tempat Lahir\n3. Ganti Tanggal Lahir\n4. Ganti Jenis Kelamin\n5. Ganti Alamat\n6. Ganti Agama\n7. Ganti Status\n8. Ganti Pekerjaan\n9. Keluar\nMasukkan Pilihan : ");
+            x = in1.nextInt();
+            if(x == 1){
+                System.out.print("Masukkan Nama : ");
+                temp.nama = in2.nextLine();
+            }
+            else if(x == 2){
+                temp.tempat_lahir = in2.nextLine();
+            }
+            else if(x == 3){
+                System.out.print("Masukkan Tanggal Hari Kelahiran (angka 1-31) : ");
+                temp.tanggal_lahir = in1.nextInt();
+                menu_bulan_lahir();
+                temp.bulan_lahir = in1.nextInt();
+                System.out.print("Masukkan Tanggal Tahun Kelahiran (angka 4 digit) : ");
+                temp.tahun_lahir = in1.nextInt();
+            }
+            else if(x == 4){
+                menu_jenis_kelamin();
+                temp.jenis_kelamin = in1.nextInt();
+            }
+            else if(x == 5){
+                temp.alamat = in2.nextLine();
+            }
+            else if(x == 6){
+                menu_agama();
+                temp.agama = in1.nextInt();
+            }
+            else if(x == 7){
+                menu_status();
+                temp.status = in1.nextInt();
+            }
+            else if(x == 8){
+                temp.pekerjaan = in2.nextLine();
+            }
+            if(x==1 || x==2 || x==3 || x==4 || x==5 || x==6 || x==7 || x==8){
+                System.out.println("Data berhasil diganti");
+                print_personal_data(last, a);
+            }
+            else if(x == 9){
+                break;
+            }
+            else{
+                System.out.println("Masukkan Salah, Mohon Ulangi Lagi dengan Lebih Cermat dan Teliti");
+            }
+        }
+    }
+}
+
+class TreeNode{
+    int umurHari;
+    String namaPenduduk;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int a, String b){
+        umurHari = a;
+        namaPenduduk = b;
+        left = null;
+        right = null;
+    }
+}
+
+class BinaryTree extends menu_dan_penerjemahan_data{
+    public TreeNode insert(TreeNode root, int a, String b){
+        if(root == null){
+            return(new TreeNode(a, b));
+        }
+        if(root.umurHari > a){
+            if(root.left == null){
+                root.left = new TreeNode(a, b);
+            }
+            else{
+                insert(root.left,a,b);
+            }
+        }
+        else if(root.umurHari < a){
+            if(root.right == null){
+                root.right = new TreeNode(a, b);
+            }
+            else{
+                insert(root.right,a,b);
+            }
+        }
+        return root;
+    }
+
+    public TreeNode deleteTreeNode(TreeNode root, int a){
+        if(root == null){
+            return root;
+        }
+        if(a<root.umurHari){
+            root.left = deleteTreeNode(root.left, a);
+        }
+        else if(a>root.umurHari){
+            root.right = deleteTreeNode(root.right, a);
+        }
+        else{
+            if(root.left == null){
+                return root.right;
+            }
+            else if(root.right == null){
+                return root.left;
+            }
+            root.umurHari = termuda(root.right);
+            root.namaPenduduk = namaTermuda(root.right);
+            root.right = deleteTreeNode(root.right,root.umurHari);
+        }
+        return root;
+    }
+
+    public void inOrder(TreeNode root){
+        if(root == null){
+            return;
+        }
+        inOrder(root.left);
+        System.out.println(root.namaPenduduk+" "+"Umurnya  "+root.umurHari+" Hari" );
+        inOrder(root.right);
+    }
+
+    public int termuda(TreeNode root){
+        if(root.left == null){
+            return root.umurHari;
+        }
+        else{
+            return termuda(root.left);
+        }
+    }
+
+    public String namaTermuda(TreeNode root){
+        if(root.left == null){
+            return root.namaPenduduk;
+        }
+        else{
+            return namaTermuda(root.left);
+        }
+    }
+
+    public int tertua(TreeNode root){
+        if(root.right == null){
+            return root.umurHari;
+        }
+        else{
+            return tertua(root.right);
+        }
+    }
+
+    public String namaTertua(TreeNode root){
+        if(root.right == null){
+            return root.namaPenduduk;
+        }
+        else{
+            return namaTertua(root.right);
+        }
+    }
+}
+
+class MANUAL_ATAU_AUTOMATIC {
+
+        DoubleLinkedList program = new DoubleLinkedList();
+        BinaryTree program2 = new BinaryTree();
+        Scanner key1 = new Scanner(System.in);
+        Scanner key2 = new Scanner(System.in);
+
+        int a,b,c1,c2,c3,y;
+        String dataNama, dataTempatLahir, dataAlamat, dataPekerjaan;
+        int dataTanggalHariKelahiran, dataBulanKelahiran, dataTahunKelahiran, dataJenisKelamin, dataAgama, dataStatus;
+        boolean flagDataLast = false;
+        Node head = null;
+        Node last = null;
+        TreeNode rootNode = null;
+        
+    public void MANUAL_INTERACTIVE_PROGRAM(){
+        //JALANKAN PROGRAM MANUAL
+        System.out.println("Sebelum Ke Menu Utama, Mohon Masukkan Tanggal Hari Ini !\n");
+        System.out.print("Tanggal (Angka 1-31)  : ");
+        c1 = key1.nextInt();
+        program.menu_bulan();
+        c2 = key1.nextInt();
+        System.out.print("Tahun (Angka 4 digit) : ");
+        c3 = key1.nextInt();
+        System.out.println("\nSELAMAT MENCOBA\n");
+        
+        while (true){
+            System.out.print("Menu Utama Program\n1. Tambah Data Baru\n2. Cari Data\n3. Tampilkan Seluruh Data\n4. Hapus Data\n5. Modifikasi Data\n6. Tampilkan Data Personal\n7. Data Penduduk Tertua\n8. Data Peduduk Termuda\n9. Statistika Penduduk\n10. Keluar\nMasukkan pilihan : ");
+            a = key1.nextInt();
+            if(a == 1){
+                System.out.print("Masukkan Nama (maksimal 25 karakter)            : ");
+                dataNama = key2.nextLine();
+                System.out.print("Masukkan Tempat Lahir (maksimal 25 karater)     : ");
+                dataTempatLahir = key2.nextLine();
+                System.out.print("Masukkan Tanggal Hari Kelahiran (angka 1-31)    : ");
+                dataTanggalHariKelahiran = key1.nextInt();
+                program.menu_bulan_lahir();
+                dataBulanKelahiran = key1.nextInt();
+                System.out.print("Masukkan Tahun Kelahiran (angka 4 digit)        : ");
+                dataTahunKelahiran = key1.nextInt();
+                program.menu_jenis_kelamin();
+                dataJenisKelamin = key1.nextInt();
+                System.out.print("Masukkan Alamat (maksimal 25 karakter)          : ");
+                dataAlamat = key2.nextLine();
+                program.menu_agama();
+                dataAgama = key1.nextInt();
+                program.menu_status();
+                dataStatus = key1.nextInt();
+                System.out.print("Masukkan Pekerjaan (maksimal 15 karakter)       : ");
+                dataPekerjaan = key2.nextLine();
+                if (flagDataLast == false){
+                    head = program.push(head, dataNama, dataTempatLahir, dataTanggalHariKelahiran, dataBulanKelahiran, dataTahunKelahiran, dataJenisKelamin, dataAlamat, dataAgama, dataStatus, dataPekerjaan);
+                    y = program2.konversi_umur_ke_hari(dataTanggalHariKelahiran, dataBulanKelahiran, dataTahunKelahiran, c1, c2, c3);
+                    rootNode = program2.insert(rootNode, y,dataNama);
+                    last = head;
+                }
+                else if(flagDataLast == true){
+                    head = program.push(head, dataNama, dataTempatLahir, dataTanggalHariKelahiran, dataBulanKelahiran, dataTahunKelahiran, dataJenisKelamin, dataAlamat, dataAgama, dataStatus, dataPekerjaan);
+                    y = program2.konversi_umur_ke_hari(dataTanggalHariKelahiran, dataBulanKelahiran, dataTahunKelahiran, c1, c2, c3);
+                    program2.insert(rootNode, y,dataNama);
+                }
+                flagDataLast = true;
+                System.out.println("Data Berhasil Dimasukkan\n");
+            }
+            else if(a == 2){
+                System.out.print("Masukkan Nama Penduduk yang ingin dicari : ");
+                dataNama = key2.nextLine();
+                program.search_name(last,dataNama);
+            }
+            else if(a == 3){
+                System.out.prinln("Berikut ini adalah Tampilan Seluruh Data Penduduk");
+                program.printList(last);
+            }
+            else if(a == 4){
+                System.out.print("Masukkan Urutan Data yang ingin dihapus (index mulai dari 1) : ");
+                b = key1.nextInt();
+                Node tempDel = last;
+                int d = 1;
+                while(tempDel!=null){
+                    if(d == b)
+                    break;
+                    tempDel = tempDel.prev;
+                    d++;
+                }
+                y = program2.konversi_umur_ke_hari(tempDel.tanggal_lahir, tempDel.bulan_lahir, tempDel.tahun_lahir, c1, c2, c3);
+                program2.deleteTreeNode(rootNode, y);
+                last = program.delete_Node_at_position(last, b);
+                
+            }
+            else if(a == 5){
+                System.out.print("Masukkan Urutan Data yang ingin dimodifikasi datanya : ");
+                b = key1.nextInt();
+                program.modification(last, b);
+            }
+            else if(a == 6){
+                System.out.print("Masukan Urutan Data yang ingin ditampilkan : ");
+                b = key1.nextInt();
+                program.print_personal_data(last, b);
+            }
+            else if(a == 7){
+                String temp = program2.namaTermuda(rootNode);
+                System.out.println("Nama Penduduk Termuda yaitu '"+temp+"'");
+                program.search_name(last,temp);
+            }
+            else if(a == 8){
+                String temp = program2.namaTertua(rootNode);
+                System.out.println("Nama Penduduk Tertua yaitu '"+temp+"'");
+                program.search_name(last,temp);
+            }
+            else if(a == 9){ 
+                System.out.println("Berikut Ini adalah Data Statistik Kependudukan\n");
+                System.out.println("Jumlah Total Penduduk Ada " +program.counterTotalData(last)+" Orang\n");
+                System.out.println("Jumlah Penduduk Penganut Agama Islam        : " +program.counterAgamaIslam(last));
+                System.out.println("Jumlah Penduduk Penganut Agama Protestan    : " +program.counterAgamaProtestan(last));
+                System.out.println("Jumlah Penduduk Penganut Agama Katolik      : " +program.counterAgamaKatolik(last));
+                System.out.println("Jumlah Penduduk Penganut Agama Hindu        : " +program.counterAgamaHindu(last));
+                System.out.println("Jumlah Penduduk Penganut Agama Buddha       : " +program.counterAgamaBuddha(last));
+                System.out.println("Jumlah Penduduk Penganut Agama Kong Hu Chu  : " +program.counterAgamaKongHuChu(last));
+                System.out.println("\nJumlah Penduduk Perempuan                   : " +program.counterPerempuan(last));
+                System.out.println("Jumlah Penduduk Laki - laki                 : " +program.counterLakilaki(last));
+                System.out.println("\nJumlah Penduduk Berstatus Belum Kawin       : " +program.counterBelumKawin(last));
+                System.out.println("Jumlah Penduduk Berstatus Sudah Kawin       : " +program.counterSudahKawin(last));
+                System.out.println("\nNama Penduduk Termuda adalah '"+program2.namaTermuda(rootNode)+"' Umurnya Saat Ini yaitu "+program2.termuda(rootNode)+" Hari");
+                System.out.println("Nama Penduduk Tertua adalah '"+program2.namaTertua(rootNode)+"' Umurnya Saat Ini yaitu "+program2.tertua(rootNode)+" Hari");
+                System.out.println("\nUrutan Penduduk Berdasarkan Umur dari Muda ke Tua : \n");
+                program2.inOrder(rootNode);
+            }
+            else if(a == 10){
+                System.out.println("Terima Kasih Sudah Menggunakan Program Kami");
+                System.out.println("Jika Masih Terdapat Kekurangan, Kami Mohon Maaf Sebesar - Besarnya");
+                break;
+            }
+            else {
+                System.out.println("Masukkan Salah, Mohon Ulangi Lagi dengan Lebih Cermat dan Teliti\n");
+            }
+        }
+    }
+
+    public void AUTOMATIC_NON_INTERACTIVE_PROGRAM(){
+            //JALANKAN PROGRAM AUTOMATIS
+            head = program.push(head,"Faris Ramadhan","Jakarta",15,12,2001,1,"Kav. DKI Blok I 7/14",1, 1,"Freelance");
+             y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            rootNode = program2.insert(rootNode, y, head.nama);
+            last = head;
+            head = program.push(head,"Farabi Dharma","Solo",8,2,2001,1,"Jl. dr rajiman no. 576",1, 1,"Bisnis/Dagang");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Muhammad Fatih","Jakarta",16,6,2001,1,"Gg. Perkutut No.9, Dukuh",1, 1,"Komedian/Pelawak");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Emmanuel Bayu","Jakarta",26,4,2001,1,"Pogung Baru Blok F no.24A",3, 1,"Grup Band");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Ahmad Husain","Solo",20,4,2001,1,"Pogung Dalangan, SIA XIV",1, 1,"Cyber Security");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Geohasby Ammar","Purwokerto",7,5,2001,1,"Darmaputera Santren UGM",1, 1,"Programmer");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Mutia Wulansari","Pekanbaru",20,5,2002,2,"Jl. Kaliurang KM 4,5",1, 1,"Sekretaris");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Muhammad Izza","Bekasi",29,7,2001,1,"Gg. Perkutut No.9, Dukuh",1, 2,"Anggota DPR");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Caroline Chan","Medan",17,1,2002,2,"Jl. Kaliurang KM 5,5",5, 1,"Web Developer");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Muhammad Rizki","Bogor",21,10,2001,1,"Griya Firdaus, Jl. Pogung Raya",1, 1,"Ustad");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Adhytia Bomantara","Yogyakarta",21,6,2001,1,"Jl. Sulawesi VII no.3",1, 1,"E-Sport Player");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+            head = program.push(head,"Nadif Aulia Putra","Padang",17,10,2001,1,"Brotoseno Pogung",1, 1,"Modern Dancer");
+            y = program2.konversi_umur_ke_hari(head.tanggal_lahir,head.bulan_lahir,head.tahun_lahir, 16, 5, 2020);
+            program2.insert(rootNode, y, head.nama);
+
+            program.search_name(last,"Faris Ramadhan");
+
+
+            System.out.println("Berikut ini adalah Tampilan Seluruh Data Penduduk");
+            program.printList(last);
+
+            Node tempDel = last;
+            int d = 1;
+            while(tempDel!=null){
+                if(d == 1)
+                break;
+                tempDel = tempDel.prev;
+                d++;
+            }
+            y = program2.konversi_umur_ke_hari(tempDel.tanggal_lahir, tempDel.bulan_lahir, tempDel.tahun_lahir, 16, 5, 2020);
+            program2.deleteTreeNode(rootNode, y);
+            last = program.delete_Node_at_position(last, 1);
+
+            program.print_personal_data(last, 1);
+
+            String temp = program2.namaTermuda(rootNode);
+            System.out.println("Nama Penduduk Termuda yaitu '"+temp+"'");
+            program.search_name(last,temp);
+
+            temp = program2.namaTertua(rootNode);
+            System.out.println("Nama Penduduk Tertua yaitu '"+temp+"'");
+            program.search_name(last,temp);
+
+            System.out.println("Berikut Ini adalah Data Statistik Kependudukan\n");
+            System.out.println("Jumlah Total Penduduk Ada " +program.counterTotalData(last)+" Orang\n");
+            System.out.println("Jumlah Penduduk Penganut Agama Islam        : " +program.counterAgamaIslam(last));
+            System.out.println("Jumlah Penduduk Penganut Agama Protestan    : " +program.counterAgamaProtestan(last));
+            System.out.println("Jumlah Penduduk Penganut Agama Katolik      : " +program.counterAgamaKatolik(last));
+            System.out.println("Jumlah Penduduk Penganut Agama Hindu        : " +program.counterAgamaHindu(last));
+            System.out.println("Jumlah Penduduk Penganut Agama Buddha       : " +program.counterAgamaBuddha(last));
+            System.out.println("Jumlah Penduduk Penganut Agama Kong Hu Chu  : " +program.counterAgamaKongHuChu(last));
+            System.out.println("\nJumlah Penduduk Perempuan                   : " +program.counterPerempuan(last));
+            System.out.println("Jumlah Penduduk Laki - laki                 : " +program.counterLakilaki(last));
+            System.out.println("\nJumlah Penduduk Berstatus Belum Kawin       : " +program.counterBelumKawin(last));
+            System.out.println("Jumlah Penduduk Berstatus Sudah Kawin       : " +program.counterSudahKawin(last));
+            System.out.println("\nNama Penduduk Termuda adalah '"+program2.namaTermuda(rootNode)+"' Umurnya Saat Ini yaitu "+program2.termuda(rootNode)+" Hari");
+            System.out.println("Nama Penduduk Tertua adalah '"+program2.namaTertua(rootNode)+"' Umurnya Saat Ini yaitu "+program2.tertua(rootNode)+" Hari");
+            System.out.println("\nUrutan Penduduk Berdasarkan Umur dari Muda ke Tua : \n");
+            program2.inOrder(rootNode);
+
+            System.out.println("\nTerima Kasih Sudah Menggunakan Program Kami");
+            System.out.println("Jika Masih Terdapat Kekurangan, Kami Mohon Maaf Sebesar - Besarnya\n");
+        }
+    
+}
+
+public class final_project{
+    public static void main(String[] args){
+
+        MANUAL_ATAU_AUTOMATIC run = new MANUAL_ATAU_AUTOMATIC();
+        System.out.println("\n                           ---------------------------");
+        System.out.println("                           |  PROGRAM DATA PENDUDUK  |");
+        System.out.println("                           ---------------------------");
+
+
+        //PILIH SALAH SATU METHOD DENGAN MENONAKTIFKAN/MENGHAPUS COMMAND ("//")
+        //run.MANUAL_INTERACTIVE_PROGRAM();
+        run.AUTOMATIC_NON_INTERACTIVE_PROGRAM();
+
+    }
+}

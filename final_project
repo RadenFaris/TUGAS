@@ -825,7 +825,7 @@ class MANUAL_ATAU_AUTOMATIC {
                 program.search_name(last,dataNama);
             }
             else if(a == 3){
-                System.out.prinln("Berikut ini adalah Tampilan Seluruh Data Penduduk");
+                System.out.println("Berikut ini adalah Tampilan Seluruh Data Penduduk");
                 program.printList(last);
             }
             else if(a == 4){
